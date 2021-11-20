@@ -5,11 +5,11 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, LogBox } from 'react-
 export default function App() {
   LogBox.ignoreLogs(['Remote debugger']);
   // Mapeamento de teclas
-  const buttons = ['LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '+/-', '=']
+  const buttons = [
+    'LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '+/-', '=']
 
   const [currentNumber, setCurrentNumber] = useState("")
   const [lastNumber, setLastNumber] = useState("")
-
 
   function calculator() {
     const splitNumbers = currentNumber.split(' ')
@@ -26,10 +26,10 @@ export default function App() {
         setCurrentNumber((fistNumber - lastNumber).toString())
         return
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString())
+        setCurrentNumber((fistNumber * lastNumber).toString())
         return
       case '/':
-        setCurrentNumber((fistNumber - lastNumber).toString())
+        setCurrentNumber((fistNumber / lastNumber).toString())
         return
     }
   }
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     flex: 8,
     backgroundColor: '#1E1240',
     color: 'white',
-    fontSize: 80,
+    fontSize: 50,
     fontWeight: 'bold',
     padding: 50,
     textAlign: 'right',
