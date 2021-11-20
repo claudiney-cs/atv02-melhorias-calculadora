@@ -61,48 +61,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
-      {/* Area onde o resultado é exibido */}
       <View style={styles.resultContainer}>
-        <Text style={styles.historyText}>{lastNumber}</Text>
-        <Text style={styles.resultText}>{currentNumber}</Text>
-        <View>
+        <Text style={styles.resultText}>0</Text>
+      </View>
 
-          {/* Area onde os botões são exibidos*/}
-          <View style={styles.buttons}>
+      <View style={styles.inputContainer}>
 
-            {buttons.map((button) =>
-              button === '=' ? // Mapeamento do botão =
-                <TouchableOpacity onPress={() =>
-                  handleInput(button)}
-                  key={button}
-                  style={[styles.button, {
-                    backgroundColor: '#3dd0e3'
-                  }]}>
-                  <Text style={[styles.textButton, {
-                    color: "white",
-                    fontSize: 30
-                  }]}>
-                    {button}
-                  </Text>
-                </TouchableOpacity>
-
-                : // Mapeamento dos outros botões
-
-                <TouchableOpacity onPress={() =>
-                  handleInput(button)}
-                  key={button}
-                  style={styles.button}>
-                  <Text style={[styles.textButton, {
-                    color: typeof (button) === 'number' ?
-                      'black' : '#0093a6'
-                  }]}>
-                    {button}
-                  </Text>
-                </TouchableOpacity>
-            )}
-          </View>
-        </View>
       </View>
     </View>
   );
@@ -116,44 +80,42 @@ const styles = StyleSheet.create({
 
   resultContainer: {
     flex: 2,
-    justifyContent: "center",
+    justifyContent: 'center',
     backgroundColor: "#1E1240"
   },
 
-  resultText: {
-    flex: 0,
+  inputContainer: {
+    flex: 8,
     backgroundColor: '#300075',
-    color: "#282F38",
-    fontSize: 32,
-    fontWeight: "bold",
-    padding: 12,
-    textAlign: "right"
   },
 
-
-
-
-
- //historyText: {
+  resultText: {
+    color: 'white',
+    fontSize: 80,
+    fontWeight: 'bold',
+    padding: 20,
+    textAlign: 'right',
+  }
+  //historyText: {
   //  color: "#fff7c7c7c",
-   // fontSize: 20,
-   // marginRight: 10,
-   // alignSelf: 'flex-end',
+  // fontSize: 20,
+  // marginRight: 10,
+  // alignSelf: 'flex-end',
   //},
   //buttons: {
-    //flexDirection: 'row',
-    //flexWrap: 'wrap',
+  //flexDirection: 'row',
+  //flexWrap: 'wrap',
   //},
   //button: {
-   // backgroundColor: '#300075',
-   // alignItems: 'center',
-   // justifyContent: 'center',
-   // minWidth: 90,
-   // minHeight: 90,
-   // flex: 2,
+  // backgroundColor: '#300075',
+  // alignItems: 'center',
+  // justifyContent: 'center',
+  // minWidth: 90,
+  // minHeight: 90,
+  // flex: 2,
   //},
   //textButton: {
   //  color: "#fff",
-   // fontSize: 20,
- // }
+  // fontSize: 20,
+  // }
 });
