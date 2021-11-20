@@ -61,12 +61,48 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+
+      {/* Area onde o resultado é exibido */}
       <View style={styles.resultContainer}>
-        <Text style={styles.resultText}>0</Text>
-      </View>
+        <Text style={styles.historyText}>{lastNumber}</Text>
+        <Text style={styles.resultText}>{currentNumber}</Text>
+        <View>
 
-      <View style={styles.inputContainer}>
+          {/* Area onde os botões são exibidos*/}
+          <View style={styles.buttons}>
 
+            {buttons.map((button) =>
+              button === '=' ? // Mapeamento do botão =
+                <TouchableOpacity onPress={() =>
+                  handleInput(button)}
+                  key={button}
+                  style={[styles.button, {
+                    backgroundColor: '#1E1240'
+                  }]}>
+                  <Text style={[styles.textButton, {
+                    color: "white",
+                    fontSize: 30
+                  }]}>
+                    {button}
+                  </Text>
+                </TouchableOpacity>
+
+                : // Mapeamento dos outros botões
+
+                <TouchableOpacity onPress={() =>
+                  handleInput(button)}
+                  key={button}
+                  style={styles.button}>
+                  <Text style={[styles.textButton, {
+                    color: typeof (button) === 'number' ?
+                      'black' : '#0093a6'
+                  }]}>
+                    {button}
+                  </Text>
+                </TouchableOpacity>
+            )}
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -80,42 +116,46 @@ const styles = StyleSheet.create({
 
   resultContainer: {
     flex: 2,
-    justifyContent: 'center',
-    backgroundColor: "#1E1240"
-  },
-
-  inputContainer: {
-    flex: 8,
-    backgroundColor: '#300075',
+    justifyContent: "center",
+    backgroundColor: "#1E1240",
   },
 
   resultText: {
+    flex: 8,
+    backgroundColor: '#1E1240',
     color: 'white',
     fontSize: 80,
     fontWeight: 'bold',
-    padding: 20,
+    padding: 50,
     textAlign: 'right',
+  },
+
+
+  historyText: {
+    color: "#fff7c7",
+    fontSize: 20,
+    marginRight: 20,
+    marginTop: 20,
+    padding: 5,
+    alignSelf: 'flex-end',
+  },
+
+  buttons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+
+  button: {
+    backgroundColor: '#300075',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 90,
+    minHeight: 90,
+    flex: 2,
+  },
+
+  textButton: {
+    color: "#fff",
+    fontSize: 20,
   }
-  //historyText: {
-  //  color: "#fff7c7c7c",
-  // fontSize: 20,
-  // marginRight: 10,
-  // alignSelf: 'flex-end',
-  //},
-  //buttons: {
-  //flexDirection: 'row',
-  //flexWrap: 'wrap',
-  //},
-  //button: {
-  // backgroundColor: '#300075',
-  // alignItems: 'center',
-  // justifyContent: 'center',
-  // minWidth: 90,
-  // minHeight: 90,
-  // flex: 2,
-  //},
-  //textButton: {
-  //  color: "#fff",
-  // fontSize: 20,
-  // }
 });
