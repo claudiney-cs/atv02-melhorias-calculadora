@@ -6,7 +6,7 @@ export default function App() {
   LogBox.ignoreLogs(['Remote debugger']);
   // Mapeamento de teclas
   const buttons = [
-    'LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '+/-', '=']
+    'LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', 0, ',', '+/-', '=']
 
   const [currentNumber, setCurrentNumber] = useState("")
   const [lastNumber, setLastNumber] = useState("")
@@ -53,6 +53,8 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        setLastNumber(currentNumber -1" = ")
+        calculator()
         return
     }
 
@@ -61,7 +63,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
       {/* Area onde o resultado é exibido */}
       <View style={styles.resultContainer}>
         <Text style={styles.historyText}>{lastNumber}</Text>
@@ -70,7 +71,6 @@ export default function App() {
 
           {/* Area onde os botões são exibidos*/}
           <View style={styles.buttons}>
-
             {buttons.map((button) =>
               button === '=' ? // Mapeamento do botão =
                 <TouchableOpacity onPress={() =>
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
 
   button: {
     backgroundColor: '#300075',
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 90,
